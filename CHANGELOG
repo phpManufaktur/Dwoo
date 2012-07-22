@@ -1,5 +1,11 @@
 ### Dwoo
 
+Release 0.14 - 2012-07-22
+
+* added plugin translate()
+* added plugin use_markdown()
+* added plugin show_wysiwyg_editor()
+
 Release 0.13 - 2012-06-13
 
 * changed version checking for WebsiteBaker
