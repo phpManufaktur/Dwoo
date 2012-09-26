@@ -1,5 +1,10 @@
 ### Dwoo
 
+Release 0.15 - 2012-09-10
+
+* plugin show_wysiwyg_editor() can now overwrite the width and height settings 
+  provided by the WYSIWYG Admin
+
 Release 0.14 - 2012-07-22
 
 * added plugin translate()
