@@ -1,5 +1,9 @@
 ### Dwoo
 
+Release 0.16 - NOT PUBLISHED, JUST IN PROGRESS
+
+* corrected path to wb2lepton.php
+
 Release 0.15 - 2012-09-10
 
 * plugin show_wysiwyg_editor() can now overwrite the width and height settings 

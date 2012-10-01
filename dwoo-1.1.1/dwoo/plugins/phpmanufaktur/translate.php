@@ -30,7 +30,7 @@ if (defined('WB_PATH')) {
 // end include class.secure.php
 
 if (!defined('LEPTON_PATH'))
-  require_once WB_PATH.'/modules/'.basename(dirname(__FILE__)).'/wb2lepton.php';
+  require_once WB_PATH.'/modules/dwoo/wb2lepton.php';
 
 // use LEPTON 2.x I18n for access to language files
 if (!class_exists('LEPTON_Helper_I18n'))

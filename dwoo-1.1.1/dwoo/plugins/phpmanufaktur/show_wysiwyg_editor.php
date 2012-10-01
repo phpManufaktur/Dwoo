@@ -30,7 +30,7 @@ if (defined('WB_PATH')) {
 // end include class.secure.php
 
 if (!defined('LEPTON_PATH'))
-  require_once WB_PATH.'/modules/'.basename(dirname(__FILE__)).'/wb2lepton.php';
+  require_once WB_PATH.'/modules/dwoo/wb2lepton.php';
 
 function Dwoo_Plugin_show_wysiwyg_editor(Dwoo $dwoo, $name, $id, $content, $width='100%', $height='250px', $toolbar='default') {
   global $wysiwyg_editor_loaded;
