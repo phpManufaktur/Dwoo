@@ -1,12 +1,18 @@
 ### Dwoo
 
+Release 0.17 - 2012-11-16
+
+* added fix to plugin show_wysiwyg_editor() to add ID to the textarea if not
+  done by the used editor (like CKE)
+* changed check for WYSIWYG Admin in plugin show_wysiwyg_editor()
+
 Release 0.16 - 2012-10-05
 
 * corrected path to wb2lepton.php
 
 Release 0.15 - 2012-09-10
 
-* plugin show_wysiwyg_editor() can now overwrite the width and height settings 
+* plugin show_wysiwyg_editor() can now overwrite the width and height settings
   provided by the WYSIWYG Admin
 
 Release 0.14 - 2012-07-22

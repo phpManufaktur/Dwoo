@@ -77,7 +77,8 @@ function Dwoo_Plugin_show_wysiwyg_editor(Dwoo $dwoo, $name, $id, $content, $widt
   elseif (file_exists(LEPTON_PATH.'/modules/wysiwyg_admin/tool.php')) {
     // check the WYSIWYG admin settings
     $SQL = "SELECT `width`,`height`,`menu` FROM `".TABLE_PREFIX."mod_wysiwyg_admin` WHERE `editor` = '".WYSIWYG_EDITOR."'";
-    if (false === ($query = $database->query($SQL)))
+    $query = $database->query($SQL);
+    if ($database->is_error())
       trigger_error(sprintf('[%s - %s] %s', __FUNCTION__, __LINE__, $database->get_error()), E_USER_ERROR);
     if ($query->numRows() == 1) {
       $old_values = $query->fetchRow(MYSQL_ASSOC);
@@ -99,6 +100,11 @@ function Dwoo_Plugin_show_wysiwyg_editor(Dwoo $dwoo, $name, $id, $content, $widt
   show_wysiwyg_editor($name, $id, $content, $width, $height);
   $content = ob_get_clean();
   $wysiwyg_editor_loaded = true;
+
+  if (strpos($content, 'id="'.$id.'"') === false) {
+    // fix: some editors like the CKE does not set the ID for the textarea!
+    $content = str_replace('<textarea ', '<textarea id="'.$id.'" ', $content);
+  }
 
   if ($wysiwyg_admin_changed) {
     // reset values for the WYSIWYG admin
