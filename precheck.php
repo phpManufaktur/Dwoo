@@ -5,33 +5,40 @@
  *
  * @author Ralf Hertsch (ralf.hertsch@phpmanufaktur.de)
  * @link http://phpmanufaktur.de
- * @copyright 2011, 2012
+ * @copyright 2011 - 2013
  * @license GNU GPL (http://www.gnu.org/licenses/gpl.html)
  */
 
 // try to include LEPTON class.secure.php to protect this file and the whole CMS!
 if (defined('WB_PATH')) {
-	if (defined('LEPTON_VERSION')) include(WB_PATH.'/framework/class.secure.php');
+    if (defined('LEPTON_VERSION')) include(WB_PATH.'/framework/class.secure.php');
 } elseif (file_exists($_SERVER['DOCUMENT_ROOT'].'/framework/class.secure.php')) {
-	include($_SERVER['DOCUMENT_ROOT'].'/framework/class.secure.php');
+    include($_SERVER['DOCUMENT_ROOT'].'/framework/class.secure.php');
 } else {
-	$subs = explode('/', dirname($_SERVER['SCRIPT_NAME']));	$dir = $_SERVER['DOCUMENT_ROOT'];
-	$inc = false;
-	foreach ($subs as $sub) {
-		if (empty($sub)) continue; $dir .= '/'.$sub;
-		if (file_exists($dir.'/framework/class.secure.php')) {
-			include($dir.'/framework/class.secure.php'); $inc = true;	break;
-		}
-	}
-	if (!$inc) trigger_error(sprintf("[ <b>%s</b> ] Can't include LEPTON class.secure.php!", $_SERVER['SCRIPT_NAME']), E_USER_ERROR);
+    $subs = explode('/', dirname($_SERVER['SCRIPT_NAME']));    $dir = $_SERVER['DOCUMENT_ROOT'];
+    $inc = false;
+    foreach ($subs as $sub) {
+        if (empty($sub)) continue; $dir .= '/'.$sub;
+        if (file_exists($dir.'/framework/class.secure.php')) {
+            include($dir.'/framework/class.secure.php'); $inc = true;    break;
+        }
+    }
+    if (!$inc) trigger_error(sprintf("[ <b>%s</b> ] Can't include LEPTON class.secure.php!", $_SERVER['SCRIPT_NAME']), E_USER_ERROR);
 }
 // end include LEPTON class.secure.php
 
-// Checking Requirements
-if (!defined('LEPTON_VERSION')) {
-  // check only WebsiteBaker Versions
-  $PRECHECK['WB_VERSION'] = array('VERSION' => '2.8', 'OPERATOR' => '>=');
+if (defined('CAT_VERSION')) {
+    $PRECHECK['CUSTOM_CHECKS']['The Dwoo template engine is integrated within BlackCat CMS and no longer needed as external Add-on!'] = array(
+        'REQUIRED' => 'OK',
+        'ACTUAL' => 'PROBLEM',
+        'STATUS' => false
+    );
 }
-$PRECHECK['PHP_VERSION'] = array('VERSION' => '5.2.0', 'OPERATOR' => '>=');
-
-?>
+else {
+    // Checking Requirements
+    if (!defined('LEPTON_VERSION')) {
+      // check only WebsiteBaker Versions
+      $PRECHECK['WB_VERSION'] = array('VERSION' => '2.8', 'OPERATOR' => '>=');
+    }
+    $PRECHECK['PHP_VERSION'] = array('VERSION' => '5.2.0', 'OPERATOR' => '>=');
+}

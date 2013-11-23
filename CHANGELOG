@@ -1,5 +1,10 @@
 ### Dwoo
 
+Release 0.18 - 2013-11-23
+
+* general program maintenance
+* prepared Dwoo for BlackCat CMS
+
 Release 0.17 - 2012-11-16
 
 * added fix to plugin show_wysiwyg_editor() to add ID to the textarea if not
